@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "My First Extension",
+  "description": "第一个扩展程序",
+  "version": "1.0",
+  "icons": {
+    "16": "images/m.png",
+    "48": "images/m.png",
+    "128": "images/m.png"
+  },
+  "background": {
+    "service_worker": "background/index.js",
+    "type": "module"
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "downloads",
+    // "webRequest", // 网络请求，拦截请求，修改请求头等
+    "declarativeNetRequest", // 拦截请求
+    "declarativeNetRequestFeedback"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://wx.zsxq.com/*/index/files"], // 匹配的url,<all_urls>，表示所有url  https://wx.zsxq.com/*
+      "js": ["content/index.js"], // 注入的js文件
+      "css": ["content/index.css"], // 注入的css文件
+      "all_frames": false, // 是否注入所有frame, 默认false, 只注入top frame, 除非设置为true
+      "run_at": "document_end", // 注入的时间, 默认document_idle, document_start, document_end
+      "match_about_blank": true // 是否匹配about:blank
+    }
+  ],
+  "host_permissions": ["https://api.zsxq.com/*"],
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "打开扩展程序"
+  }
+  // "declarative_net_request": {
+  //   "rule_resources": [
+  //     {
+  //       "id": "ruleset_1",
+  //       "enabled": true,
+  //       "path": "rules.json"
+  //     }
+  //   ]
+  // }
+}

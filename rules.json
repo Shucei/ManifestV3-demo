@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "users/self/recycle_bin/articles?count=",
+      "domains": ["https://wx.zsxq.com"],
+      "resourceTypes": ["script"]
+    }
+  }
+]
